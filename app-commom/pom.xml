@@ -11,4 +11,19 @@
 
   <artifactId>app-commom</artifactId>
 
+  <dependencies>
+    <!-- 增加spring-boot依赖，IDEA会自动将application开头的yml文件识别为配置文件，会有语法提示 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
 </project>
