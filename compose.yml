@@ -1,0 +1,35 @@
+services:
+  skywalking-oap-server:
+    image: apache/skywalking-oap-server:10.0.1-java21
+    container_name: skywalking-oap-server
+    ports:
+      - "11800:11800"
+      - "12800:12800"
+    environment:
+      TZ: Asia/Shanghai
+      SW_STORAGE: elasticsearch
+      SW_STORAGE_ES_CLUSTER_NODES: host.docker.internal:9200
+    networks:
+      skywalking:
+        aliases:
+          - skywalking-oap-server
+
+  skywalking-ui:
+    image: apache/skywalking-ui:10.0.1-java21
+    container_name: skywalking-ui
+    ports:
+      - "9080:8080"
+    environment:
+      TZ: Asia/Shanghai
+      SW_OAP_ADDRESS: http://skywalking-oap-server:12800
+    depends_on:
+      - skywalking-oap-server
+    networks:
+      skywalking:
+        aliases:
+          - skywalking-ui
+
+networks:
+  skywalking:
+    name: skywalking
+    driver: bridge
