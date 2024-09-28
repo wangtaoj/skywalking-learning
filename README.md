@@ -13,4 +13,5 @@
 目前保留了logback和log4j2的配置，可以在app-common的pom中注释logback而打开log4j2的依赖便是使用log4j2作为项目日志
 
 ### 一些问题
-gateway网关的日志会丢失traceId
+* skywalking agent不支持以debug模式启动
+* gateway网关的日志会丢失traceId
