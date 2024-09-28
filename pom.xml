@@ -38,7 +38,7 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- 核心依赖 -->
+      <!-- 核心依赖start -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -60,11 +60,30 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!-- 核心依赖end -->
 
-      <!-- 次要依赖 -->
+      <!-- 剔除默认的日志依赖，项目显示指定log starter，方便切换logback、log4j2 -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${spring-boot.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
       <dependency>
         <groupId>org.apache.skywalking</groupId>
         <artifactId>apm-toolkit-logback-1.x</artifactId>
+        <version>${skywalking-agent.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.skywalking</groupId>
+        <artifactId>apm-toolkit-log4j-2.x</artifactId>
         <version>${skywalking-agent.version}</version>
       </dependency>
 
