@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d [%traceId] %-5p %c{1}:%L - %m%n"/>
+    </Console>
+
+    <GRPCLogClientAppender name="grpc-log">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </GRPCLogClientAppender>
+  </Appenders>
+
+  <Loggers>
+    <!-- 工程目录 -->
+    <Logger name="com.wangtao" level="debug" />
+
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="grpc-log"/>
+    </Root>
+  </Loggers>
+</Configuration>
